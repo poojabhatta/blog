@@ -1,0 +1,1 @@
+web: gunicorn jqueryapi.wsgi --log-file -
