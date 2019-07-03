@@ -25,7 +25,7 @@ SECRET_KEY = 'd4zormh(e5034#pn!h+^2@#ufe2ft4e9)7+00$5yr0=4w%&4xr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['poojablog.herokuapp.com']
 
 
 # Application definition
@@ -77,14 +77,15 @@ WSGI_APPLICATION = 'jqueryapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'jqueryapi',
-        'USER': 'poojabhatta123',
-        'PASSWORD': 'poojabhatta123',
-        'HOST': 'localhost',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# add this
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 
 
