@@ -1,0 +1,130 @@
+
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+
+{% for obj in object_list %}
+        <div class="table-responsible">
+        {{ obj.title }}
+        {{ obj.content }}
+        </div>
+{% endfor %%}
+
+{% endblock %} 
+
+{% comment %}
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <title>Blog</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+                        <style>
+                        .row.content {
+
+                                height: 1500px;
+                        }
+                        
+                        .sidenav {
+                                background-color: #555;
+                                color: white;
+                                padding: 15px;
+
+                        }
+                        @media screen and (max_width: 767px){
+                                .sidenav{
+                                        height: auto;
+                                        padding: 15px;
+                                }
+                                .row.content {
+                                        height: auto;
+                                }
+                        }
+                        </style>
+        </head>
+
+        <body>
+                <div class="container-fluid">
+                        <div class="row content">
+                                <div class="col-sm-3 sidenav">
+                                        <h4>Blog Post</h4>
+                                        <ul class="nav nav-pills nav-stacked">
+                                                <li class="active"><a href="#section1">Home</a></li>
+                                                <li><a href="#section2">Top Post</a></li>
+                                                <li><a href="#section3">Recent Post</a></li>
+                                        </ul> <br>
+                                        <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Search...">
+                                                <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button">
+                                                                <span class="glyphicon glyphicon-search"></span>
+
+                                                        </button>
+                                                </span>
+                                        </div>
+                                </div>
+                                <div class="col-sm-9">
+                                        <h4><small>TOP POSTS</small></h4>
+                                        <hr>
+                                        <h2>I Love Food</h2>
+                                        <h5><span class="gyphicon glyphicon-time"></span> Post by Jane, time</h5>
+                                        <h5> <span class="label label-danger">Food</span> <span class="label label-primary">Time</span></h5>
+                                        <p>A food chain is a linear network of links in a food web starting from producer organisms (such as grass or trees which use radiation from the Sun to make their food) and ending at apex predator species (like grizzly bears or killer whales), detritivores (like earthworms or woodlice), or decomposer species (such as fungi or bacteria). 
+                                        A food chain also shows how the organisms are related with each other by the food they eat.
+                                        Each level of a food chain represents a different trophic level. 
+                                        A food chain differs from a food web, because the complex network of different animals' feeding relations are aggregated and the chain only follows a direct, linear pathway of one animal at a time. Natural interconnections between food chains make it a food web. 
+                                        A common metric used to the quantify food web trophic structure is food chain length. 
+                                        In its simplest form, the length of a chain is the number of links between a trophic consumer and the base of the web and the mean chain length of an entire web is the arithmetic average of the lengths of all chains in a food web</p>
+                                        <br>
+                                        <br>
+
+                                        <h4><small>RECENT POST</small></h4>
+                                        <hr>
+                                        <h2>Officialy  Blogging</h2>
+                                        <h5><span class="glyphicon glypicon-time">Post by Pooja, time</span></h5>
+                                        <h5><span class="label label-success">Lorem</span></h5><br>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                
+                                        <hr>
+
+                                        <h4>Leave a Comment:</h4>
+
+                                        <form role="form">
+                                                <div class="form-group">
+                                                        <textarea class='form-control' rows="3" required></textarea>
+                                                </div>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                        </form>
+                                        <br><br>
+
+                                        <p><span class="badge">2</span> Comments:</p> <br>
+
+                                        <div class="row">
+                                                <div class="col-sm-2 text-center">
+                                                        <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                                                </div>
+                                                <div class="col-sm-10">
+                                                        <h4>Anja <small>Sep 29, 2015, 9:12 PM</small></h4>
+                                                        <p>Keep up the good work!</p>
+                                                </div>
+                                                <br>
+
+                                        </div>
+                                
+                                </div>
+
+
+                        </div>
+
+                </div>
+        </body>
+
+</html>
+{% endcomment %}
