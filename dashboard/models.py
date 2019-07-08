@@ -27,11 +27,13 @@ class Blogger(models.Model):
 class Category(models.Model):
     category = models.CharField(max_length=255, null=True, blank=True)
 
+    class Meta:
+        ordering=['-id']
+
     def __str__(self):
         return self.category
 
-    class Meta:
-        ordering=['-id']
+    
 
 class Comment(models.Model):
     comment = models.TextField(null=True, blank=True)

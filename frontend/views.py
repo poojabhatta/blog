@@ -4,7 +4,7 @@ from django.views import View
 import requests
 import json
 from django.views.generic import *
-from dashboard.models import Post, Category
+from dashboard.models import *
 from django.db.models import Count, Q
 from frontend.models import Passanger
 
@@ -60,4 +60,9 @@ class PostListView(ListView):
         return context
 
 
-    
+class PostDetailView(DetailView):
+    model = Post
+    template_name = 'frontend/post_detail.html'
+
+    def get_object(self, *args, **kwargs):
+        return get_object_or_404(Post, id=self.kwargs['pk'])    

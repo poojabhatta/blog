@@ -1,74 +1,321 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet"
+                href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+                body {
+                        margin: 0;
+                        font-family: Arial, Helvetica, sans-serif;
+                }
+
+                .topnav {
+                        overflow: hidden;
+                        background-color: white;
+
+                }
+
+                .navbar-centered {
+                        margin-left: 675px;
+
+                }
+
+                .topnav-space {
+                        margin-top: 100px;
+                }
+
+                .topnav a {
+                        float: left;
+                        display: block;
+                        color: #ced2d9;
+                        text-align: center;
+                        padding: 14px 16px;
+                        text-decoration: none;
+                        font-size: 17px;
+                }
+
+                .topnav a:hover {
+                        background-color: #ddd;
+                        color: black;
+                }
+
+                .topnav a.active {
+                        /* background-color: grey; */
+                        color: black;
+
+                }
+
+                .topnav .icon {
+                        display: none;
+                }
+
+                .date-place h4 {
+                        color: #ced2d9;
+                        text-align: center !important;
+                        margin-top: 50px;
+                }
+
+                .title-place h3 {
+                        color: #71777a;
+                        text-align: center !important;
+                        margin-top: 30px;
+                        margin-bottom: 30px;
+                }
+
+                /* .responsive {
+                        width: 80%;
+                        height: auto;
+                } */
+
+                .title-content p {
+                        color: #7a868c;
+
+                }
+                .img-circle img{
+                        border-radius: 50%;
+                        margin-bottom: 20px;
+                        
+                }
+                .profile-description p {
+                        color: #71777a;
+                }
+
+                .social-icons .fa {
+                padding: 10px;
+                font-size: 30px;
+                width: 50px;
+                text-align: center;
+                text-decoration: none;
+                margin: 5px 2px;
+                border-radius: 50%;
+                }
+
+                .social-icons .fa:hover {
+                opacity: 0.7;
+                }
+
+                .social-icons .fa-facebook {
+                background: #383c42;
+                color: white;
+                }
+
+                .social-icons .fa-twitter {
+                background: #383c42;
+                color: white;
+                }
+
+                .social-icons .fa-google {
+                background: #383c42;
+                color: white;
+                }
+
+                .social-icons .fa-linkedin {
+                background: #383c42;
+                color: white;
+                }
+
+                @media screen and (max-width: 600px) {
+                        .topnav a:not(:first-child) {
+                                display: none;
+                        }
+
+                        .topnav a.icon {
+                                float: right;
+                                display: block;
+                        }
+                }
+
+                @media screen and (max-width: 600px) {
+                        .topnav.responsive {
+                                position: relative;
+                        }
+
+                        .topnav.responsive .icon {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                        }
+
+                        .topnav.responsive a {
+                                float: none;
+                                display: block;
+                                text-align: left;
+                        }
+                }
+        </style>
+</head>
+
+<body>
+
+        <div class="topnav" id="myTopnav">
+                <div class="topnav-space" style="margin-top: 100px;">
+
+                </div>
+                <div class="navbar-centered">
+                        <a href="#home" class="active">HOME</a>
+                        <a href="#news">ABOUT</a>
+                        <a href="#fashion">FASHION</a>
+                        <a href="#contact">CONTACT</a>
+                        <a href="#purchase">PURCHASE</a>
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                                <i class="fa fa-bars"></i>
+                        </a>
+                </div>
+        </div>
+
+        <div class="container">
+                <div class="row">
+                        
+                        <div class="col-md-7">
+                                        {% for object in object_list %}
+                                <div class="date-place">
+                                        <h4>{{ object.created_at }}</h4>
+                                </div>
+
+                                <div class="title-place">
+                                        <h3>{{ object.title }}</h3>
+                                </div>
+                                <div class="title-content">
+                                        <p>{{ object.content }}</p>
+
+                                </div>                                
+                                <div class="image-content">
+                                        <img src="{{ object.image.url }}" class="responsive" width="100%" height="200">
+                                </div>
+                                {% endfor%}
+                               
+                        </div>
+                        
+                        <div class="col-md-2">
+
+                        </div>
+                        <div class="col-md-3">
+                                <div class="img-circle">
+                                        <img src="{% static 'frontend/images/download.jpeg' %}">
+                                </div>
+
+                                <div class="profile-description">
+                                        <p>Welcome to my super clean professional blog about anything. This is only test.</p>
+
+                                </div>
+                                <div class="social-icons">
+                                                <a href="#" class="fa fa-facebook"></a>
+                                                <a href="#" class="fa fa-twitter"></a>
+                                                <a href="#" class="fa fa-google"></a>
+                                                <a href="#" class="fa fa-linkedin"></a>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <script>
+                function myFunction() {
+                        var x = document.getElementById("myTopnav");
+                        if (x.className === "topnav") {
+                                x.className += " responsive";
+                        } else {
+                                x.className = "topnav";
+                        }
+                }
+        </script>
+
+</body>
+
+</html>
+
+{% comment %}
 <!DOCTYPE html>
 <html lang="en">
-        <head>
-                <title>Blog</title>
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-                        <style>
-                        .row.content {
+<head>
+        <title>Blog</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-                                height: 1500px;
-                        }
-                        
+        <style>
+                .row.content {
+
+                        height: 1500px;
+                }
+
+                .sidenav {
+                        background-color: #555;
+                        color: white;
+                        padding: 15px;
+
+                }
+
+                @media screen and (max_width: 767px) {
                         .sidenav {
-                                background-color: #555;
-                                color: white;
+                                height: auto;
                                 padding: 15px;
-
                         }
-                        @media screen and (max_width: 767px){
-                                .sidenav{
-                                        height: auto;
-                                        padding: 15px;
-                                }
-                                .row.content {
-                                        height: auto;
-                                }
+
+                        .row.content {
+                                height: auto;
                         }
-                        </style>
-        </head>
+                }
+        </style>
+</head>
 
-        <body>
-                <div class="container-fluid">
-                        <div class="row content">
-                                <div class="col-sm-3">
-                                        <h4>Blog Post</h4>
-                                        <ul class="nav nav-pills nav-stacked">
-                                                <li class="active"><a href="#section1">Home</a></li>
-                                                <li><a href="#section2">Top Post</a></li>
-                                                <li><a href="#section3">Recent Post</a></li>
-                                        </ul> <br>
-                                        <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Search...">
-                                                <span class="input-group-btn">
-                                                        <button class="btn btn-default" type="button">
-                                                                <span class="glyphicon glyphicon-search"></span>
+<body>
+        <div class="container-fluid">
+                <div class="row content">
+                        <div class="col-sm-3">
+                                <h4>Blog Post</h4>
+                                <ul class="nav nav-pills nav-stacked">
+                                        <li class="active"><a href="#section1">Home</a></li>
+                                        <li><a href="#section2">Top Post</a></li>
+                                        <li><a href="#section3">Recent Post</a></li>
+                                </ul> <br>
+                                <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                        <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                        <span class="glyphicon glyphicon-search"></span>
 
-                                                        </button>
-                                                </span>
-                                        </div>
+                                                </button>
+                                        </span>
                                 </div>
-                                <div class="col-sm-9">
-                                        <h4><small>RECENT POST</small></h4>
-                                        {% for obj in object_list %}
-                                        <h4><small></small></h4>
-                                        <hr>
-                                        <h2>{{ obj.title|safe}}</h2>
-                                        <h5><span class="gyphicon glyphicon-time"></span> Post by {{obj.blogger.name}}</h5>
-                                        <h5> <span class="label label-danger">{{ obj.category|default_if_none:'' }}</span> <span class="label label-primary">{{ obj.created_at}}</span></h5>
-                                        <p>
+                        </div>
+                        <div class="col-sm-9">
+                                <h4><small>RECENT POST</small></h4>
+                                {% for obj in object_list %}
+                                <h4><small></small></h4>
+                                <hr>
+                                <h2>{{ obj.title|safe}}</h2>
+                                <h5><span class="gyphicon glyphicon-time"></span> Post by {{obj.blogger.name}}</h5>
+                                <h5> <span class="label label-danger">{{ obj.category }}</span> <span
+                                                class="label label-primary">{{ obj.created_at}}</span></h5>
+                                <p>
                                         {{ obj.content|safe }}
                                         <br>
                                         <br>
-                                        
+
                                         <hr>
 
                                         <h4>Leave a Comment:</h4>
+
+
+                                        <form class="form" action="" mmethod="POST">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                        <textarea class="form-control" rows="3" required></textarea>
+                                                        <input type="submit" id="submit" class="btn btn-success"
+                                                                value="Save">
+                                                        <a href="" class="btn btn-primary">Cancel</a>
+                                                </div>
+                                        </form>
+
 
                                         <form role="form">
                                                 <div class="form-group">
@@ -76,37 +323,46 @@
                                                 </div>
                                                 <button type="submit" class="btn btn-success">Submit</button>
                                         </form>
+
                                         <br><br>
                                         <p><span class="badge">{{ obj.comment.count }}</span> Comments:</p> <br>
                                         {% for comment in obj.comment.all %}
-                                        
-                                        
+
+
                                         <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                        <img src="{{ comment.photo }}" class="img-circle" height="65" width="65" alt="Avatar">
+                                                        <img src="{{ comment.photo }}" class="img-circle" height="65"
+                                                                width="65" alt="Avatar">
                                                 </div>
-                                                
+
                                                 <div class="col-sm-10">
                                                         <h4>{{ comment.user }} <small>{{ comment.time}}</small></h4>
-                                                        
+
                                                         <p>{{ comment }}</p>
                                                 </div>
-                                                <br>            
+                                                <br>
                                         </div>
                                         {% endfor %}
                                         {% endfor %}
 
-                                        {% comment %}
+
+
+
                                         <h4><small>TOP POST</small></h4>
                                         <hr>
-                                        <h2>Officialy  Blogging</h2>
+                                        <h2>Officialy Blogging</h2>
                                         <h5><span class="glyphicon glypicon-time">Post by Pooja,time</span></h5>
                                         <h5><span class="label label-success">Lorem</span></h5><br>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                                tempor incididunt ut labore et dolore magna aliqua.
+                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                                ut aliquip ex ea commodo consequat.
+                                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                                officia deserunt mollit anim id est laborum consectetur adipiscing elit,
+                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                                                ut aliquip ex ea commodo consequat.</p>
+
                                         <hr>
 
                                         <h4>Leave a Comment:</h4>
@@ -123,23 +379,22 @@
 
                                         <div class="row">
                                                 <div class="col-sm-2 text-center">
-                                                        <img src="bandmember.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+                                                        <img src="bandmember.jpg" class="img-circle" height="65"
+                                                                width="65" alt="Avatar">
                                                 </div>
                                                 <div class="col-sm-10">
                                                         <h4>talk <small>Sep 29, 2015, 9:12 PM</small></h4>
                                                         <p>Keep up the good work!</p>
                                                 </div>
                                                 <br>
-                                                
+
                                         </div>
-                                        {% endcomment %}
-                                
-                                </div>
 
 
                         </div>
-
                 </div>
-        </body>
+        </div>
+</body>
 
 </html>
+{% endcomment %}

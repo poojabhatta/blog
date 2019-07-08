@@ -25,7 +25,7 @@ SECRET_KEY = 'd4zormh(e5034#pn!h+^2@#ufe2ft4e9)7+00$5yr0=4w%&4xr'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['poojablog.herokuapp.com']
+ALLOWED_HOSTS = ['poojablog.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
