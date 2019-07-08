@@ -171,8 +171,7 @@
         </div>
 
         <div class="container">
-                <div class="row">
-                        
+                <div class="row">                        
                         <div class="col-md-7">
                                         {% for object in object_list %}
                                 <div class="date-place">
@@ -185,10 +184,12 @@
                                 <div class="title-content">
                                         <p>{{ object.content }}</p>
 
-                                </div>                                
+                                </div>  
+                                {% comment %}                              
                                 <div class="image-content">
                                         <img src="{{ object.image.url }}" class="responsive" width="100%" height="200">
                                 </div>
+                                {% endcomment %}
                                 {% endfor%}
                                
                         </div>
