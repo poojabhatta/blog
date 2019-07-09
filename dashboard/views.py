@@ -58,7 +58,22 @@ class PostCreateView(LoginRequired404Mixin,CreateView):
         # return super().form_valid(form)
     
 
-# class PostListView(LoginRequired404Mixin,ListView):
-#     template_name = 'dashboard/post/post_list.html'
-#     queryset = Post.objects.all()
-    
+class PostListView(LoginRequired404Mixin,ListView):
+    template_name = 'dashboard/post/post_list.html'
+    queryset = Post.objects.all()
+    model = Post
+
+
+
+class PostDetailView(LoginRequired404Mixin, DetailView):
+    model = Post
+    template_name = 'dashboard/post/post_detail.html'
+
+
+class PostUpdateView(LoginRequired404Mixin, UpdateView):
+    template_name = 'dashboard/post/post_create.html'
+    form_class = PostForm
+    success_url = reverse_lazy('dashboard:post_list')
+
+    def get_queryset(self, *args, **kwargs):
+        return Post.objects.filter(id=self.kwargs.get('pk'))

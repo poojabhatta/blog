@@ -1,16 +1,8 @@
-
-{% extends 'dashboard/base.html' %}
-{% load static %}
-{% block content %}
-
 {% for obj in object_list %}
-        <div class="table-responsible">
-        {{ obj.title }}
-        {{ obj.content }}
-        </div>
-{% endfor %%}
 
-{% endblock %} 
+<a href="{% url 'dashboard:post_detail' obj.id %}">{{ obj.title }}</a><br>
+
+{% endfor %}
 
 {% comment %}
 <!DOCTYPE html>

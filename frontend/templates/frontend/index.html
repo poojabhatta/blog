@@ -78,47 +78,53 @@
                         color: #7a868c;
 
                 }
-                .img-circle img{
+
+                .img-circle img {
                         border-radius: 50%;
                         margin-bottom: 20px;
-                        
+
                 }
+
                 .profile-description p {
                         color: #71777a;
                 }
 
                 .social-icons .fa {
-                padding: 10px;
-                font-size: 30px;
-                width: 50px;
-                text-align: center;
-                text-decoration: none;
-                margin: 5px 2px;
-                border-radius: 50%;
+                        padding: 10px;
+                        font-size: 30px;
+                        width: 50px;
+                        text-align: center;
+                        text-decoration: none;
+                        margin: 5px 2px;
+                        border-radius: 50%;
                 }
 
                 .social-icons .fa:hover {
-                opacity: 0.7;
+                        opacity: 0.7;
                 }
 
                 .social-icons .fa-facebook {
-                background: #383c42;
-                color: white;
+                        background: #383c42;
+                        color: white;
                 }
 
                 .social-icons .fa-twitter {
-                background: #383c42;
-                color: white;
+                        background: #383c42;
+                        color: white;
                 }
 
                 .social-icons .fa-google {
-                background: #383c42;
-                color: white;
+                        background: #383c42;
+                        color: white;
                 }
 
                 .social-icons .fa-linkedin {
-                background: #383c42;
-                color: white;
+                        background: #383c42;
+                        color: white;
+                }
+
+                .container {
+                        margin-top: 40px;
                 }
 
                 @media screen and (max-width: 600px) {
@@ -149,17 +155,27 @@
                                 text-align: left;
                         }
                 }
+
+                @media screen and (max-width:1616px) {
+                        .navbar-centered {
+                                margin-left: 0px;
+
+                        }
+
+                }
         </style>
 </head>
 
 <body>
 
-        <div class="topnav" id="myTopnav">
-                <div class="topnav-space" style="margin-top: 100px;">
+        <div class="topnav" id="myTopnav" style="border-bottom: 1px solid;">
+                <div class="topnav-space" style="margin-top: 100px;border-bottom: 1px solid;">
 
                 </div>
                 <div class="navbar-centered">
-                        <a href="#home" class="active">HOME</a>
+
+                        <a href="{% url 'frontend:index_view' %}"
+                                class="{% if request.resolver_match.url_name == 'index_view' %} active {% endif%}">HOME</a>
                         <a href="#news">ABOUT</a>
                         <a href="#fashion">FASHION</a>
                         <a href="#contact">CONTACT</a>
@@ -167,13 +183,14 @@
                         <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                                 <i class="fa fa-bars"></i>
                         </a>
+
                 </div>
         </div>
 
         <div class="container">
-                <div class="row">                        
+                <div class="row">
                         <div class="col-md-7">
-                                        {% for object in object_list %}
+                                {% for object in object_list %}
                                 <div class="date-place">
                                         <h4>{{ object.created_at }}</h4>
                                 </div>
@@ -181,19 +198,21 @@
                                 <div class="title-place">
                                         <h3>{{ object.title }}</h3>
                                 </div>
-                                <div class="title-content">
-                                        <p>{{ object.content }}</p>
 
-                                </div>  
-                                {% comment %}                              
+                                <div class="title-content">
+                                        <p>{{ object.content|safe }}</p>
+
+                                </div>
+                                {% if object.image %}
                                 <div class="image-content">
                                         <img src="{{ object.image.url }}" class="responsive" width="100%" height="200">
                                 </div>
-                                {% endcomment %}
+                                {% endif %}
+
                                 {% endfor%}
-                               
+
                         </div>
-                        
+
                         <div class="col-md-2">
 
                         </div>
@@ -203,18 +222,27 @@
                                 </div>
 
                                 <div class="profile-description">
-                                        <p>Welcome to my super clean professional blog about anything. This is only test.</p>
+                                        <p>Welcome to my super clean professional blog about anything. This is only
+                                                test.</p>
 
                                 </div>
                                 <div class="social-icons">
-                                                <a href="#" class="fa fa-facebook"></a>
-                                                <a href="#" class="fa fa-twitter"></a>
-                                                <a href="#" class="fa fa-google"></a>
-                                                <a href="#" class="fa fa-linkedin"></a>
+                                        <a href="#" class="fa fa-facebook"></a>
+                                        <a href="#" class="fa fa-twitter"></a>
+                                        <a href="#" class="fa fa-google"></a>
+                                        <a href="#" class="fa fa-linkedin"></a>
+                                </div>
+                                <div class="about-me" style="margin-top: 50px;">
+                                        <h6
+                                                style="word-wrap: break-word;border-bottom: 1px solid;border-top: 1px solid;">
+                                                ABOUT ME</h6>
                                 </div>
                         </div>
                 </div>
         </div>
+
+        <!-- Footer -->
+
         <script>
                 function myFunction() {
                         var x = document.getElementById("myTopnav");
@@ -227,6 +255,13 @@
         </script>
 
 </body>
+
+<footer class="page-footer font-small blue" style="margin-top: 30px;">
+        <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                <a href="">blog.com</a>
+        </div>
+</footer>
+
 
 </html>
 

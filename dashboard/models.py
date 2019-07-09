@@ -32,7 +32,6 @@ class Category(models.Model):
 
     def __str__(self):
         return self.category
-
     
 
 class Comment(models.Model):
@@ -50,7 +49,7 @@ class Comment(models.Model):
 class Post(DateTimeModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='categories')
     blogger = models.ForeignKey(Blogger, on_delete=models.CASCADE, related_name='bloggers')
-    comment = models.ManyToManyField(Comment, related_name='comments')
+    comment = models.ManyToManyField(Comment, related_name='comments', null=True, blank=True)
     url = models.URLField(null=True, blank=True)
     title = models.CharField(max_length=255)
     image = models.ImageField(null=True, blank=True)

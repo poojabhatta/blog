@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^$', LoginView.as_view(), name='login'),
     url(r'^logout$', LogoutView.as_view(), name='logout'),
     url(r'^post/create/$', PostCreateView.as_view(), name='post_create'),
-    # url(r'^post/list/$', PostListView.as_view(), name='post_create'),
+    url(r'^post/list/$', PostListView.as_view(), name='post_list'),
+    url(r'^post/update/(?P<pk>\d+)/', PostUpdateView.as_view(), name='post_update'),
+    url(r'^post/(?P<pk>\d+)/detail/$', PostDetailView.as_view(), name='post_detail'),
     
 ]
