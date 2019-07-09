@@ -1,0 +1,18 @@
+<div class="topnav" id="myTopnav" style="border-bottom: 1px solid;">
+    <div class="topnav-space" style="margin-top: 100px;border-bottom: 1px solid;">
+
+    </div>
+    <div class="navbar-centered">
+
+            <a href="{% url 'frontend:index_view' %}"
+                    class="{% if request.resolver_match.url_name == 'index_view' %} active {% endif%}">HOME</a>
+            <a href="#news">ABOUT</a>
+            <a href="#fashion">FASHION</a>
+            <a href="#contact">CONTACT</a>
+            <a href="#purchase">PURCHASE</a>
+            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+            </a>
+
+    </div>
+</div>

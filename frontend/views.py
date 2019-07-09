@@ -64,5 +64,5 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'frontend/post_detail.html'
 
-    def get_object(self, *args, **kwargs):
-        return get_object_or_404(Post, id=self.kwargs['pk'])    
+    # def get_object(self, *args, **kwargs):
+    #     return get_object_or_404(Post, id=self.kwargs.get('pk'))    
